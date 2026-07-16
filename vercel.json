@@ -24,6 +24,10 @@
   ],
   "rewrites": [
     {
+      "source": "/images/:name.svg",
+      "destination": "/ai-ops/images/:name.jpg"
+    },
+    {
       "source": "/images/:path*",
       "destination": "/ai-ops/images/:path*"
     },
