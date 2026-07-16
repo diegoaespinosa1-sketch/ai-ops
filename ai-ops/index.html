@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diego Espinosa | AI Ops — Grok Agents That Create Real Leverage</title>
+  <meta name="description" content="I build bespoke Grok agents and AI systems that save technical teams and founders 20+ hours per week. No fluff. Cold, hard operational leverage.">
+  <meta name="author" content="Diego Espinosa">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Diego Espinosa | AI Ops">
+  <meta property="og:description" content="Grok-powered agents that deliver measurable ops efficiency, revenue growth, and founder performance.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ai.sarka-ops.com">
+  <meta property="og:image" content="https://ai.sarka-ops.com/images/tom-brady.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://ai.sarka-ops.com/images/tom-brady.svg">
+  
+  <!-- Tailwind via CDN for instant, dependency-free deployment -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script>
+    // Tailwind runtime config + custom theme
+    document.documentElement.style.setProperty('--accent', '#67e8f9');
+  </script>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+    
+    :root {
+      --bg: #0a0a0a;
+      --card: #111111;
+      --border: #222222;
+      --text: #ededed;
+      --text-muted: #a1a1aa;
+    }
+    
+    body {
+      font-family: 'Inter', system_ui, sans-serif;
+    }
+    
+    .font-display {
+      font-family: 'Space Grotesk', 'Inter', system_ui, sans-serif;
+      font-feature-settings: "ss01", "ss02";
+    }
+
+    .section-header {
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      line-height: 1.05;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+    }
+
+    .sharp-text {
+      font-feature-settings: "tnum", "ss01";
+    }
+
+    .nav-link {
+      transition: color 0.1s ease;
+    }
+    .nav-link:hover {
+      color: #fff;
+    }
+
+    .accent {
+      color: #67e8f9;
+    }
+
+    .glass {
+      background: rgba(17, 17, 17, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid #222;
+    }
+
+    .card {
+      transition: transform 0.2s cubic-bezier(0.23, 1.0, 0.32, 1), 
+                  box-shadow 0.2s cubic-bezier(0.23, 1.0, 0.32, 1),
+                  border-color 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      border-color: #333;
+    }
+
+    .stat-number {
+      font-variant-numeric: tabular-nums;
+    }
+
+    .hook {
+      font-size: clamp(2.75rem, 7vw, 4.5rem);
+      line-height: 1.0;
+      letter-spacing: -0.05em;
+    }
+
+    .lethal {
+      font-weight: 600;
+      letter-spacing: -0.025em;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #222, transparent);
+    }
+
+    .agent-pill {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      transition: all 0.2s ease;
+    }
+    .agent-pill:hover {
+      background: #222;
+      border-color: #444;
+    }
+
+    .metric {
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .nav-scrolled {
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid #222;
+    }
+
+    .grok-glow {
+      box-shadow: 0 0 0 1px #67e8f920;
+    }
+  </style>
+</head>
+<body class="bg-[#0a0a0a] text-[#ededed] antialiased">
+  
+  <!-- NAV -->
+  <nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+      <div class="flex items-center gap-x-3">
+        <div class="flex items-center gap-x-2.5">
+          <div class="w-8 h-8 rounded-full bg-[#67e8f9] flex items-center justify-center">
+            <span class="text-[#0a0a0a] text-lg font-bold tracking-tighter">DE</span>
+          </div>
+          <div>
+            <div class="font-semibold tracking-tight text-lg">Diego Espinosa</div>
+            <div class="text-[10px] text-[#a1a1aa] -mt-1">AI OPS</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hidden md:flex items-center gap-x-9 text-sm font-medium">
+        <a href="#systems" class="nav-link text-[#a1a1aa]">Systems</a>
+        <a href="#room" class="nav-link text-[#a1a1aa]">In the room</a>
+        <a href="#how" class="nav-link text-[#a1a1aa]">How it works</a>
+        <a href="#contact" class="nav-link text-[#a1a1aa]">Contact</a>
+      </div>
+      
+      <div class="flex items-center gap-x-3">
+        <a href="https://x.com/DiegoEspinosaAI" target="_blank" 
+           class="group hidden sm:flex items-center gap-x-2 px-4 py-2 text-sm font-medium rounded-full border border-[#333] hover:border-[#444] hover:bg-[#111] transition-all">
+          <i class="fa-brands fa-x-twitter text-sm"></i>
+          <span class="font-medium">@DiegoEspinosaAI</span>
+        </a>
+        
+        <a href="https://x.com/DiegoEspinosaAI" target="_blank"
+           class="inline-flex items-center gap-x-2 bg-white text-black px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-[#f1f1f1] active:scale-[0.985] transition-all">
+          <span>DM me on X</span>
+          <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+        </a>
+
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-btn"
+                class="md:hidden w-10 h-10 flex items-center justify-center text-[#a1a1aa] hover:text-white border border-[#333] rounded-xl active:bg-[#111]"
+                aria-label="Toggle menu">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden border-t border-[#222] bg-[#0a0a0a]">
+      <div class="px-6 py-5 flex flex-col gap-y-3 text-sm font-medium">
+        <a href="#leverage" class="mobile-nav-link py-1 text-[#a1a1aa]">Leverage</a>
+        <a href="#systems" class="mobile-nav-link py-1 text-[#a1a1aa]">Systems</a>
+        <a href="#how" class="mobile-nav-link py-1 text-[#a1a1aa]">How it works</a>
+        <a href="#about" class="mobile-nav-link py-1 text-[#a1a1aa]">About</a>
+        <a href="#contact" class="mobile-nav-link py-1 text-[#a1a1aa]">Contact</a>
+        <a href="#room" class="mobile-nav-link py-1 text-[#a1a1aa]">In the room</a>
+        <div class="pt-3 border-t border-[#222]">
+          <a href="https://x.com/DiegoEspinosaAI" target="_blank" class="flex items-center gap-x-2 py-2 text-white">
+            <i class="fa-brands fa-x-twitter"></i>
+            <span>@DiegoEspinosaAI</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="pt-20 min-h-[100dvh] flex items-center relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-6 pt-12 pb-20">
+      <div class="max-w-4xl">
+        <!-- Trust bar -->
+        <div class="inline-flex items-center gap-x-2 px-3 py-1 rounded-full border border-[#222] text-xs tracking-[0.5px] mb-8">
+          <div class="w-1.5 h-1.5 bg-[#67e8f9] rounded-full animate-pulse"></div>
+          <span class="text-[#a1a1aa] font-medium">HACKING AI FOR REAL OPERATIONAL EDGE</span>
+        </div>
+        
+        <h1 class="hook font-display leading-none tracking-[-4.2px] mb-6">
+          I build Grok agents<br>
+          that <span class="accent">actually</span> ship.
+        </h1>
+        
+        <p class="max-w-xl text-2xl text-[#a1a1aa] tracking-tight mb-10">
+          No theater. No 47-step frameworks.<br>
+          Just systems that save technical teams and founders <span class="text-white font-semibold">20+ hours every week</span>.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <a href="#contact"
+             class="group flex items-center justify-center gap-x-3 bg-white hover:bg-[#f4f4f5] text-black px-8 py-4 rounded-2xl font-semibold text-lg transition-all active:scale-[0.985]">
+            <span>Send a structured note</span>
+            <i class="fa-solid fa-arrow-right text-sm"></i>
+          </a>
+          
+          <a href="https://x.com/DiegoEspinosaAI" target="_blank"
+             class="flex items-center justify-center gap-x-2 px-8 py-4 rounded-2xl font-semibold text-lg border border-[#333] hover:bg-[#111] transition-all">
+            <i class="fa-brands fa-x-twitter"></i>
+            <span>DM on X</span>
+          </a>
+        </div>
+        
+        <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-[#a1a1aa]">
+          <a href="#room" class="hover:text-white transition">In rooms with Tom Brady, Joe Foster, JT Foxx →</a>
+          <span class="text-[#333]">|</span>
+          <a href="#systems" class="hover:text-white transition">See the 4 systems →</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Subtle background accent -->
+    <div class="absolute bottom-0 right-0 w-1/2 h-2/3 bg-[radial-gradient(#222_0.8px,transparent_1px)] bg-[length:5px_5px] opacity-40 pointer-events-none"></div>
+  </div>
+
+  <!-- PROBLEM / THE DRAG -->
+  <div id="problem" class="max-w-5xl mx-auto px-6 pt-8 pb-24">
+    <div class="grid md:grid-cols-12 gap-y-12 items-start">
+      <div class="md:col-span-5">
+        <div class="sticky top-24">
+          <div class="uppercase tracking-[2px] text-xs font-semibold text-[#67e8f9] mb-3">THE REAL COST</div>
+          <h2 class="section-header tracking-[-2.8px]">Most teams are<br>bleeding time<br>they'll never get back.</h2>
+        </div>
+      </div>
+      
+      <div class="md:col-span-7 space-y-6 text-[17px] text-[#a1a1aa]">
+        <p class="text-[#ededed]">You know the feeling. Another week disappears into Slack, spreadsheets, status meetings, and firefighting.</p>
+        
+        <div class="pl-5 border-l-2 border-[#333] space-y-5">
+          <div>Manual SOPs that go stale the moment they're written.</div>
+          <div>Customer requests that fall through cracks because no one owns the full journey.</div>
+          <div>Procurement and ops decisions made on gut instead of live, clean data.</div>
+          <div>Brilliant people spending their best hours on work a well-built agent could handle in minutes.</div>
+        </div>
+        
+        <p class="pt-2 text-[#ededed]">The gap between what your team <span class="text-white">could</span> be doing and what they're actually doing is your biggest competitive disadvantage.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider max-w-5xl mx-auto"></div>
+
+  <!-- THE LEVERAGE -->
+  <div class="max-w-5xl mx-auto px-6 py-20">
+    <div class="text-center mb-12">
+      <div class="uppercase tracking-[2px] text-xs font-semibold text-[#67e8f9] mb-3">THE UNFAIR ADVANTAGE</div>
+      <h2 class="section-header tracking-[-2.8px] max-w-3xl mx-auto">I turn Grok into your<br>most reliable operator.</h2>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="card glass rounded-3xl p-7 border border-[#222]">
+        <div class="text-[#67e8f9] mb-4"><i class="fa-solid fa-robot text-2xl"></i></div>
+        <div class="font-semibold text-xl tracking-tight mb-3">Bespoke Grok Agents</div>
+        <div class="text-[#a1a1aa]">Not generic chatbots. Purpose-built agents with memory, tools, and your exact processes wired in. They get better every week.</div>
+      </div>
+      
+      <div class="card glass rounded-3xl p-7 border border-[#222]">
+        <div class="text-[#67e8f9] mb-4"><i class="fa-solid fa-clock text-2xl"></i></div>
+        <div class="font-semibold text-xl tracking-tight mb-3">20+ Hours Back</div>
+        <div class="text-[#a1a1aa]">Every single week. Real, audited time. The kind that lets your best people do the work only they can do — while the system runs the rest.</div>
+      </div>
+      
+      <div class="card glass rounded-3xl p-7 border border-[#222]">
+        <div class="text-[#67e8f9] mb-4"><i class="fa-solid fa-shield-halved text-2xl"></i></div>
+        <div class="font-semibold text-xl tracking-tight mb-3">Zero Theater</div>
+        <div class="text-[#a1a1aa]">I don't sell dreams. I build things that survive contact with reality. If it doesn't create measurable leverage, we don't ship it.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIGNATURE SYSTEMS -->
+  <div id="systems" class="bg-[#111] py-20 border-y border-[#222]">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+        <div>
+          <div class="uppercase tracking-[2px] text-xs font-semibold text-[#67e8f9] mb-3">WHAT I ACTUALLY BUILD</div>
+          <h3 class="section-header tracking-[-2.2px]">Signature systems that pay for themselves fast.</h3>
+        </div>
+        <a href="https://x.com/DiegoEspinosaAI" target="_blank" class="text-sm font-medium flex items-center gap-x-1.5 text-[#a1a1aa] hover:text-white">
+          See recent builds <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-4">
+        <!-- Agent 1 - The Ops Brain -->
+        <div onclick="openModal('ops-brain')" class="agent-pill rounded-3xl p-8 group cursor-pointer">
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <div class="font-semibold text-2xl tracking-tight">The Ops Brain</div>
+              <div class="text-[#67e8f9] text-sm font-medium mt-1">Your entire operation, on tap</div>
+            </div>
+            <i class="fa-solid fa-brain text-3xl text-[#333] group-hover:text-[#67e8f9] transition"></i>
+          </div>
+          <div class="text-[#a1a1aa] mb-6">One agent that knows your SOPs, client history, pricing rules, and team capacity. Ask anything. Get decisions you can execute in minutes.</div>
+          <div class="text-xs uppercase tracking-widest text-[#666]">USED FOR: Multi-site ops • Service delivery • Escalations</div>
+        </div>
+        
+        <!-- Agent 2 - Revenue Recovery Agent -->
+        <div onclick="openModal('revenue-recovery')" class="agent-pill rounded-3xl p-8 group cursor-pointer">
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <div class="font-semibold text-2xl tracking-tight">Revenue Recovery Agent</div>
+              <div class="text-[#67e8f9] text-sm font-medium mt-1">Stop leaving money in the pipeline</div>
+            </div>
+            <i class="fa-solid fa-chart-line text-3xl text-[#333] group-hover:text-[#67e8f9] transition"></i>
+          </div>
+          <div class="text-[#a1a1aa] mb-6">Monitors deals, flags at-risk revenue, surfaces forgotten follow-ups, and writes the exact messages your team should send. Integrates with your CRM.</div>
+          <div class="text-xs uppercase tracking-widest text-[#666]">USED FOR: Sales teams • Account management • Churn prevention</div>
+        </div>
+        
+        <!-- Agent 3 - SOP Factory -->
+        <div onclick="openModal('sop-factory')" class="agent-pill rounded-3xl p-8 group cursor-pointer">
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <div class="font-semibold text-2xl tracking-tight">SOP Factory</div>
+              <div class="text-[#67e8f9] text-sm font-medium mt-1">Living documentation that never goes stale</div>
+            </div>
+            <i class="fa-solid fa-file-lines text-3xl text-[#333] group-hover:text-[#67e8f9] transition"></i>
+          </div>
+          <div class="text-[#a1a1aa] mb-6">Watches how your team actually does the work, then writes and updates the SOPs in real time. New hires ramp in days instead of months.</div>
+          <div class="text-xs uppercase tracking-widest text-[#666]">USED FOR: Scaling teams • Quality control • Knowledge transfer</div>
+        </div>
+        
+        <!-- Agent 4 - Procurement & Cost Agent -->
+        <div onclick="openModal('procurement')" class="agent-pill rounded-3xl p-8 group cursor-pointer">
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <div class="font-semibold text-2xl tracking-tight">Procurement &amp; Cost Agent</div>
+              <div class="text-[#67e8f9] text-sm font-medium mt-1">Relentless margin protection</div>
+            </div>
+            <i class="fa-solid fa-handshake text-3xl text-[#333] group-hover:text-[#67e8f9] transition"></i>
+          </div>
+          <div class="text-[#a1a1aa] mb-6">Scans every invoice and contract. Flags pricing creep, suggests better suppliers, and negotiates via email in your voice. Quietly saves 15-25% on ops spend.</div>
+          <div class="text-xs uppercase tracking-widest text-[#666]">USED FOR: Multi-site services • Facilities • Hospitality ops</div>
+        </div>
+      </div>
+      
+      <div class="mt-6 text-center text-sm text-[#666]">
+        Click any system above to see exactly how it works and what results it delivers.
+      </div>
+      <div class="mt-1 text-center text-[12px] text-[#555]">
+        By engaging, you agree to our <a href="/terms.html" target="_blank" class="underline hover:text-[#888]">Terms</a> and <a href="/privacy.html" target="_blank" class="underline hover:text-[#888]">Privacy Policy</a>.
+      </div>
+    </div>
+  </div>
+
+  <!-- IN THE ROOM -->
+  <div id="room" class="max-w-5xl mx-auto px-6 py-20 bg-[#111] border-y border-[#222]">
+    <div class="uppercase tracking-[2px] text-xs font-semibold text-[#67e8f9] mb-4 text-center">IN THE ROOM</div>
+    <h3 class="text-center section-header tracking-[-2.2px] mb-4 max-w-2xl mx-auto">Proximity to exceptional<br>performance.</h3>
+    <p class="text-center text-[#a1a1aa] mb-12 max-w-xl mx-auto text-sm">
+      Networking is not the product. It is context. I spend time around people who have built and run serious businesses — then I build systems that hold that standard.
+    </p>
+    
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Tom Brady -->
+      <div class="bg-[#0a0a0a] border border-[#222] rounded-3xl overflow-hidden group">
+        <img src="images/tom-brady.svg" alt="Diego Espinosa with Tom Brady" class="w-full aspect-[4/3] object-cover group-hover:scale-[1.02] transition duration-300">
+        <div class="p-5">
+          <div class="font-semibold text-lg">With Tom Brady</div>
+          <div class="text-sm text-[#67e8f9] mt-1">7× Super Bowl Champion</div>
+        </div>
+      </div>
+
+      <!-- Joe Foster -->
+      <div class="bg-[#0a0a0a] border border-[#222] rounded-3xl overflow-hidden group">
+        <img src="images/joe-foster.svg" alt="Diego Espinosa with Joe Foster, Co-Founder of Reebok" class="w-full aspect-[4/3] object-cover group-hover:scale-[1.02] transition duration-300">
+        <div class="p-5">
+          <div class="font-semibold text-lg">With Joe Foster</div>
+          <div class="text-sm text-[#67e8f9] mt-1">Co-Founder of Reebok</div>
+        </div>
+      </div>
+
+      <!-- JT Foxx -->
+      <div class="bg-[#0a0a0a] border border-[#222] rounded-3xl overflow-hidden group">
+        <img src="images/jt-foxx.svg" alt="Diego Espinosa with JT Foxx" class="w-full aspect-[4/3] object-cover group-hover:scale-[1.02] transition duration-300">
+        <div class="p-5">
+          <div class="font-semibold text-lg">With JT Foxx</div>
+          <div class="text-sm text-[#67e8f9] mt-1">Entrepreneur & Mega Success Presenter</div>
+        </div>
+      </div>
+
+      <!-- Tim Gannon -->
+      <div class="bg-[#0a0a0a] border border-[#222] rounded-3xl overflow-hidden group">
+        <img src="images/tim-gannon.svg" alt="Diego Espinosa with Tim Gannon" class="w-full aspect-[4/3] object-cover group-hover:scale-[1.02] transition duration-300">
+        <div class="p-5">
+          <div class="font-semibold text-lg">With Tim Gannon</div>
+          <div class="text-sm text-[#67e8f9] mt-1">Entrepreneur & Business Leader</div>
+        </div>
+      </div>
+
+      <!-- Jim Keyes & Joe Foster -->
+      <div class="bg-[#0a0a0a] border border-[#222] rounded-3xl overflow-hidden group">
+        <img src="images/jim-keyes-joe-foster.svg" alt="Diego Espinosa with Jim Keyes and Joe Foster" class="w-full aspect-[4/3] object-cover group-hover:scale-[1.02] transition duration-300">
+        <div class="p-5">
+          <div class="font-semibold text-lg">With Jim Keyes & Joe Foster</div>
+          <div class="text-sm text-[#67e8f9] mt-1">Business Leaders</div>
+        </div>
+      </div>
+
+      <!-- Caroline Stanbury & Sergio -->
+      <div class="bg-[#0a0a0a] border border-[#222] rounded-3xl overflow-hidden group">
+        <img src="images/caroline-stanbury-sergio.svg" alt="Diego Espinosa with Caroline Stanbury and Sergio Carrallo" class="w-full aspect-[4/3] object-cover group-hover:scale-[1.02] transition duration-300">
+        <div class="p-5">
+          <div class="font-semibold text-lg">With Caroline Stanbury & Sergio Carrallo</div>
+          <div class="text-sm text-[#67e8f9] mt-1">Business Leaders & Entrepreneurs</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 text-center">
+      <p class="text-sm text-[#a1a1aa] mb-3">
+        More moments with high-caliber operators available upon request.
+      </p>
+      <a href="https://x.com/DiegoEspinosaAI" target="_blank" class="inline-flex items-center gap-x-2 text-sm font-medium text-[#67e8f9] hover:text-white transition">
+        See more on X <i class="fa-solid fa-arrow-right text-xs"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- WHAT THESE SYSTEMS DELIVER -->
+  <div id="outcomes" class="max-w-5xl mx-auto px-6 py-20">
+    <div class="uppercase tracking-[2px] text-xs font-semibold text-[#67e8f9] mb-4 text-center">WHAT GETS DELIVERED</div>
+    <h3 class="text-center section-header tracking-[-2.2px] mb-4 max-w-2xl mx-auto">Outcomes these systems<br>are built to create.</h3>
+    <p class="text-center text-[#a1a1aa] mb-12 max-w-xl mx-auto text-sm">
+      Not theater. Not vanity dashboards. Concrete operational leverage multi-site operators can measure in hours, ramp time, revenue, and cost.
+    </p>
+    
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="card border border-[#222] bg-[#111] rounded-3xl p-8">
+        <div class="font-semibold mb-2">Ops Brain + SOP Factory</div>
+        <div class="text-sm text-[#a1a1aa] mb-4">For operators drowning in escalations and slow new-hire ramp.</div>
+        <div class="text-white font-medium mb-2">Target outcomes:</div>
+        <ul class="text-sm text-[#a1a1aa] space-y-2">
+          <li>→ Leadership time back from repeated questions and firefighting</li>
+          <li>→ Faster, cleaner ramp for site managers</li>
+          <li>→ Living SOPs that stay current instead of rotting in a folder</li>
+        </ul>
+      </div>
+
+      <div class="card border border-[#222] bg-[#111] rounded-3xl p-8">
+        <div class="font-semibold mb-2">Revenue Recovery Agent</div>
+        <div class="text-sm text-[#a1a1aa] mb-4">For teams leaking pipeline through slow or missed follow-up.</div>
+        <div class="text-white font-medium mb-2">Target outcomes:</div>
+        <ul class="text-sm text-[#a1a1aa] space-y-2">
+          <li>→ At-risk deals surfaced before they die</li>
+          <li>→ Follow-ups written in your voice, ready to send</li>
+          <li>→ Sales time spent closing, not hunting ghosts in the CRM</li>
+        </ul>
+      </div>
+
+      <div class="card border border-[#222] bg-[#111] rounded-3xl p-8">
+        <div class="font-semibold mb-2">Procurement &amp; Cost Agent</div>
+        <div class="text-sm text-[#a1a1aa] mb-4">For multi-site ops where supplier spend creeps without visibility.</div>
+        <div class="text-white font-medium mb-2">Target outcomes:</div>
+        <ul class="text-sm text-[#a1a1aa] space-y-2">
+          <li>→ Pricing creep flagged early</li>
+          <li>→ Negotiation drafts in your voice</li>
+          <li>→ Margin protection without adding headcount</li>
+        </ul>
+      </div>
+
+      <div class="card border border-[#222] bg-[#111] rounded-3xl p-8">
+        <div class="font-semibold mb-2">Full stack on existing systems</div>
+        <div class="text-sm text-[#a1a1aa] mb-4">For operators who already have strong human ops (SOPs, CX, CRM) and need the AI layer.</div>
+        <div class="text-white font-medium mb-2">Target outcomes:</div>
+        <ul class="text-sm text-[#a1a1aa] space-y-2">
+          <li>→ Existing systems run with less babysitting</li>
+          <li>→ Leadership reclaimed for growth work</li>
+          <li>→ Complements partners like Šárka — not a replacement</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center text-xs text-[#666] max-w-lg mx-auto">
+      Outcomes depend on how ready your ops and data are. I only take engagements where we can measure leverage in the first 30–90 days.
+    </div>
+  </div>
+
+  <div class="divider max-w-5xl mx-auto"></div>
+
+  <!-- HOW IT WORKS -->
+  <div id="how" class="max-w-5xl mx-auto px-6 py-20">
+    <div class="max-w-2xl mb-12">
+      <div class="uppercase tracking-[2px] text-xs font-semibold text-[#67e8f9] mb-3">THE PROCESS</div>
+      <h3 class="section-header tracking-[-2.4px]">Simple. Ruthless. Effective.</h3>
+    </div>
+    
+    <div class="space-y-px max-w-3xl">
+      <div class="flex gap-8 items-start py-7 border-b border-[#222]">
+        <div class="font-mono text-4xl font-semibold text-[#222] w-14 shrink-0">01</div>
+        <div>
+          <div class="font-semibold text-xl mb-1.5">Discovery (90 mins)</div>
+          <div class="text-[#a1a1aa]">I get brutally honest about where your time actually goes. We map the highest-leverage 3–5 processes worth automating first.</div>
+        </div>
+      </div>
+      
+      <div class="flex gap-8 items-start py-7 border-b border-[#222]">
+        <div class="font-mono text-4xl font-semibold text-[#222] w-14 shrink-0">02</div>
+        <div>
+          <div class="font-semibold text-xl mb-1.5">Build in the open</div>
+          <div class="text-[#a1a1aa]">You see every agent as it's built. No black boxes. We iterate in real time against your actual work, not theoretical workflows.</div>
+        </div>
+      </div>
+      
+      <div class="flex gap-8 items-start py-7 border-b border-[#222]">
+        <div class="font-mono text-4xl font-semibold text-[#222] w-14 shrink-0">03</div>
+        <div>
+          <div class="font-semibold text-xl mb-1.5">Embed &amp; harden</div>
+          <div class="text-[#a1a1aa]">The agent goes into production. We measure the actual hours reclaimed, errors prevented, and revenue protected. Then we expand.</div>
+        </div>
+      </div>
+      
+      <div class="flex gap-8 items-start py-7">
+        <div class="font-mono text-4xl font-semibold text-[#222] w-14 shrink-0">04</div>
+        <div>
+          <div class="font-semibold text-xl mb-1.5">Ongoing edge</div>
+          <div class="text-[#a1a1aa]">Monthly tune-ups as your business evolves. New tools, new processes, new leverage points. You stay ahead. Your competitors don't.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT / BORROWED TIME -->
+  <div id="about" class="bg-[#111] border-y border-[#222] py-20">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid md:grid-cols-12 gap-x-8 gap-y-8 items-center">
+        <div class="md:col-span-7">
+          <div class="uppercase tracking-[2px] text-xs font-semibold text-[#67e8f9] mb-3">THE DIFFERENCE</div>
+          <h3 class="section-header tracking-[-2.4px] mb-6">I don't have time<br>for mediocre AI.</h3>
+          
+          <div class="prose prose-invert text-[#a1a1aa] max-w-xl space-y-5 text-[15.5px]">
+            <p>I treat time as non-negotiable. Every decision I make — what I build, who I work with, what I ship — is filtered through that lens. I don’t waste it on tools that look impressive in demos and die in real operations.</p>
+            
+            <p>Everything I build is judged by one standard — does this create <span class="text-white">unfuckwithable</span> leverage for the people who use it every day?</p>
+            
+            <p>That's why I only work with a small number of operators who are serious. If you're looking for another AI toy to play with, I'm not your guy.</p>
+          </div>
+        </div>
+        
+        <div class="md:col-span-5">
+          <div class="glass border border-[#222] rounded-3xl p-8">
+            <div class="font-semibold mb-4 tracking-tight">What I optimize for</div>
+            <ul class="space-y-[13px] text-sm">
+              <li class="flex gap-3"><span class="text-[#67e8f9] mt-1">→</span> <span>Measurable time back in the first 30 days</span></li>
+              <li class="flex gap-3"><span class="text-[#67e8f9] mt-1">→</span> <span>Systems that improve without constant babysitting</span></li>
+              <li class="flex gap-3"><span class="text-[#67e8f9] mt-1">→</span> <span>Zero theater. If it doesn't work in production, we kill it.</span></li>
+              <li class="flex gap-3"><span class="text-[#67e8f9] mt-1">→</span> <span>Complements human expertise (especially ops leaders like Šárka)</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Personal story pushed further down -->
+      <div class="mt-8 text-sm text-[#a1a1aa] max-w-xl">
+        The reason that perspective runs so deep is personal. In 2015 I was given a permanent reminder that time is finite. It’s why I move with urgency, ship only what creates real leverage, and refuse to waste anyone’s time — including my own.
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLEMENTARY NOTE -->
+  <div class="max-w-5xl mx-auto px-6 py-14">
+    <div class="flex items-center gap-4 text-sm border border-[#222] bg-[#111] rounded-2xl p-5">
+      <div class="text-[#67e8f9]"><i class="fa-solid fa-link text-lg"></i></div>
+      <div class="text-[#a1a1aa]">
+        <span class="text-white font-medium">Perfect complement to traditional ops excellence.</span> 
+        If you already work with Šárka Espinosa on customer experience, SOPs, and systems, my agents make those systems run themselves — and get smarter over time.
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT FORM -->
+  <div id="contact" class="max-w-3xl mx-auto px-6 py-16 border-t border-[#222]">
+    <div class="text-center mb-10">
+      <div class="text-[#67e8f9] text-sm tracking-[1.5px] font-semibold mb-2">PREFER A STRUCTURED NOTE?</div>
+      <h3 class="font-display text-4xl tracking-[-2px]">Send me the details</h3>
+      <p class="text-[#a1a1aa] mt-3 max-w-md mx-auto">I read every message personally. The more specific you are about your current ops drag, the faster I can tell you if we're a fit.</p>
+    </div>
+
+    <form id="contact-form" action="https://formspree.io/f/mojbbgvp" method="POST" class="space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label for="name" class="block text-sm font-medium text-[#a1a1aa] mb-2">Your name</label>
+          <input type="text" id="name" name="name" required
+                 class="w-full bg-[#111] border border-[#333] focus:border-[#67e8f9] rounded-2xl px-5 py-3 text-white placeholder-[#666] outline-none transition">
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-[#a1a1aa] mb-2">Work email</label>
+          <input type="email" id="email" name="email" required
+                 class="w-full bg-[#111] border border-[#333] focus:border-[#67e8f9] rounded-2xl px-5 py-3 text-white placeholder-[#666] outline-none transition">
+        </div>
+      </div>
+
+      <div>
+        <label for="company" class="block text-sm font-medium text-[#a1a1aa] mb-2">Company / Team</label>
+        <input type="text" id="company" name="company"
+               class="w-full bg-[#111] border border-[#333] focus:border-[#67e8f9] rounded-2xl px-5 py-3 text-white placeholder-[#666] outline-none transition"
+               placeholder="Acme Corp or 'Solo founder'">
+      </div>
+
+      <div>
+        <label for="challenge" class="block text-sm font-medium text-[#a1a1aa] mb-2">What's the biggest ops or time drain right now?</label>
+        <textarea id="challenge" name="challenge" rows="5" required
+                  class="w-full bg-[#111] border border-[#333] focus:border-[#67e8f9] rounded-3xl px-5 py-4 text-white placeholder-[#666] outline-none transition resize-y"
+                  placeholder="Be specific. The more painful and concrete, the better."></textarea>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label for="timeline" class="block text-sm font-medium text-[#a1a1aa] mb-2">When are you looking to move?</label>
+          <select id="timeline" name="timeline"
+                  class="w-full bg-[#111] border border-[#333] focus:border-[#67e8f9] rounded-2xl px-5 py-3 text-white outline-none transition">
+            <option value="">Select timeline</option>
+            <option value="ASAP">This month (ASAP)</option>
+            <option value="1-2 months">Next 1–2 months</option>
+            <option value="Exploring">Just exploring options</option>
+            <option value="Later">Later this year</option>
+          </select>
+        </div>
+        <div>
+          <label for="source" class="block text-sm font-medium text-[#a1a1aa] mb-2">How did you find me?</label>
+          <input type="text" id="source" name="source" 
+                 class="w-full bg-[#111] border border-[#333] focus:border-[#67e8f9] rounded-2xl px-5 py-3 text-white placeholder-[#666] outline-none transition"
+                 placeholder="X, referral, sarka-ops.com, etc.">
+        </div>
+      </div>
+
+      <!-- Honeypot (spam protection) -->
+      <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off">
+
+      <div class="text-[12px] text-[#666]">
+        By submitting, you agree to our <a href="/terms.html" target="_blank" class="underline hover:text-[#a1a1aa]">Terms</a> and <a href="/privacy.html" target="_blank" class="underline hover:text-[#a1a1aa]">Privacy Policy</a>.
+      </div>
+
+      <button type="submit"
+              class="w-full md:w-auto group flex items-center justify-center gap-x-3 bg-white hover:bg-[#f4f4f5] active:bg-white text-black text-lg font-semibold px-10 py-4 rounded-2xl transition-all disabled:opacity-70">
+        <span id="submit-text">Send message</span>
+        <span id="submit-spinner" class="hidden">
+          <i class="fa-solid fa-spinner fa-spin"></i>
+        </span>
+      </button>
+
+      <div id="form-success" class="hidden text-center p-6 bg-[#111] border border-[#222] rounded-3xl">
+        <div class="text-[#67e8f9] text-2xl mb-3"><i class="fa-solid fa-check-circle"></i></div>
+        <div class="font-semibold text-lg">Message received.</div>
+        <p class="text-[#a1a1aa] mt-1">I'll reply personally within 48 hours (usually much faster). In the meantime, feel free to DM me on X as well.</p>
+      </div>
+    </form>
+
+    <div class="text-center mt-6 text-xs text-[#666]">
+      You can also reach me directly at <a href="https://x.com/DiegoEspinosaAI" class="underline hover:text-[#a1a1aa]" target="_blank">@DiegoEspinosaAI</a>
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="max-w-4xl mx-auto px-6 pb-24 pt-4 text-center">
+    <div class="max-w-lg mx-auto">
+      <div class="text-[#67e8f9] text-sm tracking-[1.5px] font-semibold mb-3">NEXT MOVE</div>
+      
+      <h2 class="font-display text-4xl tracking-[-2px] leading-none mb-5">Your competitors are already<br>quietly getting faster.</h2>
+      
+      <div class="text-sm text-[#a1a1aa] mb-8">
+        Most engagements range between $18,000 – $65,000+, depending on scope and complexity. Limited engagements per quarter.
+      </div>
+      
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#contact"
+           class="inline-flex items-center justify-center gap-x-3 bg-white hover:bg-[#f4f4f5] text-black text-lg font-semibold px-10 py-4 rounded-2xl transition-all shadow-lg shadow-black/40 w-full sm:w-auto">
+          <span>Send a structured note</span>
+        </a>
+        <a href="https://x.com/DiegoEspinosaAI" target="_blank"
+           class="inline-flex items-center justify-center gap-x-3 border border-[#333] hover:bg-[#111] text-white text-lg font-semibold px-10 py-4 rounded-2xl transition-all w-full sm:w-auto">
+          <i class="fa-brands fa-x-twitter text-xl"></i>
+          <span>DM on X</span>
+        </a>
+      </div>
+      
+      <div class="mt-5 text-xs text-[#666]">I read every message. No pitch decks. No theater.</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-[#222] py-8 text-xs text-[#666]">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row md:items-center justify-between gap-y-3">
+      <div>© <span id="year"></span> Diego Espinosa. Built with Grok. No wasted moves.</div>
+      <div class="flex flex-wrap gap-x-5 gap-y-2">
+        <a href="https://x.com/DiegoEspinosaAI" target="_blank" class="hover:text-[#a1a1aa]">X</a>
+        <a href="#room" class="hover:text-[#a1a1aa]">In the room</a>
+        <a href="#contact" class="hover:text-[#a1a1aa]">Contact</a>
+        <a href="/terms.html" class="hover:text-[#a1a1aa]">Terms</a>
+        <a href="/privacy.html" class="hover:text-[#a1a1aa]">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple nav scroll behavior
+    function initNav() {
+      const nav = document.getElementById('nav');
+      
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+          nav.classList.add('nav-scrolled');
+        } else {
+          nav.classList.remove('nav-scrolled');
+        }
+      });
+    }
+    
+    // Year in footer
+    function initYear() {
+      document.getElementById('year').textContent = new Date().getFullYear();
+    }
+    
+    // Subtle metric animation on scroll into view
+    function initMetrics() {
+      const metrics = document.querySelectorAll('.metric');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.transform = 'translateY(-1px)';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.6 });
+      
+      metrics.forEach(m => observer.observe(m));
+    }
+    
+    // Keyboard hint for power users
+    function initPowerUserHints() {
+      document.addEventListener('keydown', (e) => {
+        if (e.key.toLowerCase() === '?' && document.activeElement.tagName === 'BODY') {
+          e.preventDefault();
+          window.open('https://x.com/DiegoEspinosaAI', '_blank');
+        }
+      });
+      
+      // Optional: console easter egg
+      console.log('%c[Diego AI Ops] Sharp operator detected. DM @DiegoEspinosaAI — let\'s build something lethal.', 'color:#444; font-size:9px');
+    }
+    
+    // Contact form handler (Formspree)
+    function initContactForm() {
+      const form = document.getElementById('contact-form');
+      if (!form) return;
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const submitText = document.getElementById('submit-text');
+      const submitSpinner = document.getElementById('submit-spinner');
+      const successBox = document.getElementById('form-success');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Basic client-side guard
+        const email = form.querySelector('#email').value.trim();
+        if (!email || !form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        // Show loading state
+        submitBtn.disabled = true;
+        submitText.classList.add('hidden');
+        submitSpinner.classList.remove('hidden');
+
+        try {
+          const formData = new FormData(form);
+          
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            // Success
+            form.style.display = 'none';
+            successBox.classList.remove('hidden');
+            successBox.classList.add('block');
+          } else {
+            // Formspree error (usually validation or rate limit)
+            const data = await response.json();
+            alert(data.error || 'Something went wrong. Please try DMing me on X instead.');
+            submitBtn.disabled = false;
+            submitText.classList.remove('hidden');
+            submitSpinner.classList.add('hidden');
+          }
+        } catch (err) {
+          alert('Network error. Please try again or DM me directly on X.');
+          submitBtn.disabled = false;
+          submitText.classList.remove('hidden');
+          submitSpinner.classList.add('hidden');
+        }
+      });
+    }
+
+    // Mobile menu
+    function initMobileMenu() {
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      
+      if (!btn || !menu) return;
+
+      btn.addEventListener('click', () => {
+        const isOpen = !menu.classList.contains('hidden');
+        if (isOpen) {
+          menu.classList.add('hidden');
+          btn.innerHTML = '<i class="fa-solid fa-bars text-lg"></i>';
+        } else {
+          menu.classList.remove('hidden');
+          btn.innerHTML = '<i class="fa-solid fa-times text-lg"></i>';
+        }
+      });
+
+      // Close on link click
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          menu.classList.add('hidden');
+          btn.innerHTML = '<i class="fa-solid fa-bars text-lg"></i>';
+        });
+      });
+    }
+    
+    // Modal functions
+    function openModal(agent) {
+      const modal = document.getElementById('agent-modal');
+      const content = document.getElementById('modal-content');
+      
+      if (!modal || !content) return;
+
+      let html = '';
+
+      if (agent === 'ops-brain') {
+        html = `
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <div class="font-semibold text-3xl tracking-tight">The Ops Brain</div>
+              <div class="text-[#67e8f9] mt-1">Your entire operation, on tap</div>
+            </div>
+          </div>
+          <div class="space-y-5 text-[#a1a1aa]">
+            <p>This is not a chatbot. It’s a custom-built agent that lives inside your actual operations — connected to your SOPs, client data, pricing logic, team capacity, and historical decisions.</p>
+            
+            <div>
+              <div class="font-semibold text-white mb-2">What it actually does:</div>
+              <ul class="space-y-1 list-disc list-inside">
+                <li>Answers complex operational questions in seconds</li>
+                <li>Makes recommendations based on your real rules and history</li>
+                <li>Flags issues before they become problems</li>
+                <li>Handles escalations using your exact playbooks</li>
+              </ul>
+            </div>
+
+            <p>Most operators who implement this report getting back 15–25 hours per week that were previously spent answering the same questions, chasing information, or making decisions with incomplete data.</p>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-[#222] space-y-4">
+            <div class="text-sm text-[#a1a1aa]">
+              Most engagements range between $18,000 – $65,000+, depending on scope and complexity. We usually begin with a focused pilot or discovery phase.
+            </div>
+            <div class="text-[12px] text-[#666]">
+              By engaging, you agree to our <a href="/terms.html" target="_blank" class="underline hover:text-[#a1a1aa]">Terms</a> and <a href="/privacy.html" target="_blank" class="underline hover:text-[#a1a1aa]">Privacy Policy</a>.
+            </div>
+            <a href="https://x.com/DiegoEspinosaAI" target="_blank" 
+               class="inline-flex items-center gap-x-3 bg-white text-black px-8 py-3 rounded-2xl font-semibold hover:bg-[#f4f4f5] transition-all">
+              DM me on X to discuss The Ops Brain
+            </a>
+          </div>
+        `;
+      } 
+      
+      else if (agent === 'revenue-recovery') {
+        html = `
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <div class="font-semibold text-3xl tracking-tight">Revenue Recovery Agent</div>
+              <div class="text-[#67e8f9] mt-1">Stop leaving money in the pipeline</div>
+            </div>
+          </div>
+          <div class="space-y-5 text-[#a1a1aa]">
+            <p>This agent watches your sales pipeline like a senior operator who never sleeps. It doesn’t just remind you — it actively surfaces at-risk revenue and writes the exact follow-ups that convert.</p>
+            
+            <div>
+              <div class="font-semibold text-white mb-2">What it monitors:</div>
+              <ul class="space-y-1 list-disc list-inside">
+                <li>Deals that have gone quiet</li>
+                <li>Stuck proposals and forgotten follow-ups</li>
+                <li>Price objections that need specific responses</li>
+                <li>Churn signals in existing accounts</li>
+              </ul>
+            </div>
+
+            <p>Clients using this agent typically see 12–25% more revenue recovered from their existing pipeline within the first 90 days — money that was previously leaking through slow or inconsistent follow-up.</p>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-[#222] space-y-4">
+            <div class="text-sm text-[#a1a1aa]">
+              Most engagements range between $18,000 – $65,000+, depending on scope and complexity. We usually begin with a focused pilot or discovery phase.
+            </div>
+            <div class="text-[12px] text-[#666]">
+              By engaging, you agree to our <a href="/terms.html" target="_blank" class="underline hover:text-[#a1a1aa]">Terms</a> and <a href="/privacy.html" target="_blank" class="underline hover:text-[#a1a1aa]">Privacy Policy</a>.
+            </div>
+            <a href="https://x.com/DiegoEspinosaAI" target="_blank" 
+               class="inline-flex items-center gap-x-3 bg-white text-black px-8 py-3 rounded-2xl font-semibold hover:bg-[#f4f4f5] transition-all">
+              DM me on X to discuss the Revenue Recovery Agent
+            </a>
+          </div>
+        `;
+      } 
+      
+      else if (agent === 'sop-factory') {
+        html = `
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <div class="font-semibold text-3xl tracking-tight">SOP Factory</div>
+              <div class="text-[#67e8f9] mt-1">Living documentation that never goes stale</div>
+            </div>
+          </div>
+          <div class="space-y-5 text-[#a1a1aa]">
+            <p>Most SOPs die the day they’re written. This agent watches how your team actually does the work in real time and continuously writes, updates, and improves your operating procedures.</p>
+            
+            <div>
+              <div class="font-semibold text-white mb-2">How it works:</div>
+              <ul class="space-y-1 list-disc list-inside">
+                <li>Observes real workflows across tools and communication</li>
+                <li>Writes or updates SOPs in your voice and format</li>
+                <li>Flags when processes drift from documented procedures</li>
+                <li>Creates role-specific playbooks for new hires</li>
+              </ul>
+            </div>
+
+            <p>Companies using this typically cut new hire ramp time by 50–70% and dramatically reduce quality variation across teams.</p>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-[#222] space-y-4">
+            <div class="text-sm text-[#a1a1aa]">
+              Most engagements range between $18,000 – $65,000+, depending on scope and complexity. We usually begin with a focused pilot or discovery phase.
+            </div>
+            <div class="text-[12px] text-[#666]">
+              By engaging, you agree to our <a href="/terms.html" target="_blank" class="underline hover:text-[#a1a1aa]">Terms</a> and <a href="/privacy.html" target="_blank" class="underline hover:text-[#a1a1aa]">Privacy Policy</a>.
+            </div>
+            <a href="https://x.com/DiegoEspinosaAI" target="_blank" 
+               class="inline-flex items-center gap-x-3 bg-white text-black px-8 py-3 rounded-2xl font-semibold hover:bg-[#f4f4f5] transition-all">
+              DM me on X to discuss the SOP Factory
+            </a>
+          </div>
+        `;
+      } 
+      
+      else if (agent === 'procurement') {
+        html = `
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <div class="font-semibold text-3xl tracking-tight">Procurement &amp; Cost Agent</div>
+              <div class="text-[#67e8f9] mt-1">Relentless margin protection</div>
+            </div>
+          </div>
+          <div class="space-y-5 text-[#a1a1aa]">
+            <p>This agent quietly protects your margins by scanning every invoice, contract, and supplier interaction. It flags pricing creep, identifies better suppliers, and even negotiates in your voice.</p>
+            
+            <div>
+              <div class="font-semibold text-white mb-2">What it delivers:</div>
+              <ul class="space-y-1 list-disc list-inside">
+                <li>Flags when suppliers quietly increase prices</li>
+                <li>Suggests alternative suppliers with better terms</li>
+                <li>Drafts negotiation emails in your exact style</li>
+                <li>Tracks contract renewal dates and leverage points</li>
+              </ul>
+            </div>
+
+            <p>Most operators see 12–25% reduction in operational spend within 6–9 months with almost zero extra work on their end.</p>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-[#222] space-y-4">
+            <div class="text-sm text-[#a1a1aa]">
+              Most engagements range between $18,000 – $65,000+, depending on scope and complexity. We usually begin with a focused pilot or discovery phase.
+            </div>
+            <div class="text-[12px] text-[#666]">
+              By engaging, you agree to our <a href="/terms.html" target="_blank" class="underline hover:text-[#a1a1aa]">Terms</a> and <a href="/privacy.html" target="_blank" class="underline hover:text-[#a1a1aa]">Privacy Policy</a>.
+            </div>
+            <a href="https://x.com/DiegoEspinosaAI" target="_blank" 
+               class="inline-flex items-center gap-x-3 bg-white text-black px-8 py-3 rounded-2xl font-semibold hover:bg-[#f4f4f5] transition-all">
+              DM me on X to discuss the Procurement &amp; Cost Agent
+            </a>
+          </div>
+        `;
+      }
+
+      content.innerHTML = html;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('agent-modal');
+      if (modal) {
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+      }
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('agent-modal');
+        if (modal && !modal.classList.contains('hidden')) {
+          closeModal();
+        }
+      }
+    });
+
+    // Boot
+    function boot() {
+      initNav();
+      initYear();
+      initMetrics();
+      initPowerUserHints();
+      initMobileMenu();
+      initContactForm();
+    }
+    
+    window.onload = boot;
+  </script>
+
+<!-- AGENT MODALS -->
+<div id="agent-modal" onclick="closeModal()" class="hidden fixed inset-0 bg-black/80 z-[100] items-center justify-center p-4">
+  <div onclick="event.stopImmediatePropagation()" class="bg-[#111] border border-[#222] rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-8 relative">
+    <button onclick="closeModal()" class="absolute top-6 right-6 text-[#666] hover:text-white text-2xl leading-none">×</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+</body>
+</html>
